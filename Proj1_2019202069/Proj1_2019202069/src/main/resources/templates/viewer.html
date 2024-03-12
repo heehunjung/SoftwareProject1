@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+ <h1><B>Image Viewer</B></h1>
+
+<div>
+    <img th:src="@{'/images/' + ${image.name}}" alt="Image" style="width: 400px; height: 400px; object-fit: cover;">
+    <p>Title</p> <span th:text="${image.title}"></span><p></p>
+    <p>Content</p><p> <span th:text="${image.content}"></span></p>
+</div>
+
+<div>
+        <form method="post" th:action="@{/viewer/{id}(id=${image.id})}">
+            <input type="submit" value="삭제">
+        </form>
+        <form method="get" th:action="@{/viewer/{id}(id=${image.id})}">
+            <input type="submit" value="수정">
+        </form>
+</div>
+</body>
+</html>
